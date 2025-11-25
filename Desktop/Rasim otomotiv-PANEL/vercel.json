@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "ls -la && pwd && cd \"Desktop/Rasim otomotiv-PANEL/frontend\" && npm ci && npm run build",
+  "buildCommand": "pwd && ls -la && find . -name 'frontend' -type d && cd \"Desktop/Rasim otomotiv-PANEL/frontend\" && npm ci && npm run build",
   "devCommand": "cd \"Desktop/Rasim otomotiv-PANEL/frontend\" && npm run dev",
   "installCommand": "cd \"Desktop/Rasim otomotiv-PANEL/frontend\" && npm ci",
   "framework": "vite",
