@@ -1,0 +1,47 @@
+# Frontend
+frontend/
+
+# Node modules
+node_modules/
+backend/node_modules/
+*/node_modules/
+
+# Build outputs
+backend/dist/
+backend/build/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Documentation
+*.md
+!backend/README.md
+
+# Test
+backend/test/
+backend/coverage/
+
+# Misc
+.claude/
+.cache/
+*.zip
