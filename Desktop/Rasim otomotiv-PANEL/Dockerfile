@@ -4,11 +4,11 @@ FROM node:22-alpine
 WORKDIR /app
 
 # Backend dependencies
-COPY backend/package*.json ./
+COPY Desktop/Rasim\ otomotiv-PANEL/backend/package*.json ./
 RUN npm ci --legacy-peer-deps
 
 # Backend source
-COPY backend/ ./
+COPY Desktop/Rasim\ otomotiv-PANEL/backend/ ./
 
 # Build
 RUN npm run build
