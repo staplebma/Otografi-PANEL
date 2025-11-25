@@ -8,10 +8,13 @@ COPY backend/package*.json ./
 RUN npm ci --legacy-peer-deps
 
 # Backend source
-COPY backend/ ./
+COPY backend/ .
 
 # Build
 RUN npm run build
+
+# Verify build output
+RUN ls -la dist
 
 # Start
 EXPOSE 3007

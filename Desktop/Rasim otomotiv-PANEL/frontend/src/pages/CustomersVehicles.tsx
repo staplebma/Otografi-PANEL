@@ -139,8 +139,8 @@ const CustomersVehicles: React.FC = () => {
                         customersService.getAll(),
                         vehiclesService.getAll()
                     ]);
-                    setCustomers(loadedCustomers);
-                    setVehicles(loadedVehicles);
+                    setCustomers(loadedCustomers as Customer[]);
+                    setVehicles(loadedVehicles as Vehicle[]);
                 } catch (error: any) {
                     console.error('Veri yükleme hatası:', error);
                     toast.error('Veriler yüklenirken hata oluştu: ' + (error.response?.data?.message || error.message));
@@ -326,11 +326,11 @@ const CustomersVehicles: React.FC = () => {
 
                 // Müşteri listesini yenile
                 const refreshedCustomers = await customersService.getAll();
-                setCustomers(refreshedCustomers);
+                setCustomers(refreshedCustomers as Customer[]);
 
                 // Araç listesini yenile
                 const refreshedVehicles = await vehiclesService.getAll();
-                setVehicles(refreshedVehicles);
+                setVehicles(refreshedVehicles as Vehicle[]);
             }
 
             setShowAddModal(false);
@@ -393,7 +393,7 @@ const CustomersVehicles: React.FC = () => {
 
                 // Araç listesini yenile
                 const refreshedVehicles = await vehiclesService.getAll();
-                setVehicles(refreshedVehicles);
+                setVehicles(refreshedVehicles as Vehicle[]);
             }
 
             setShowAddVehicleModal(false);
@@ -464,7 +464,7 @@ const CustomersVehicles: React.FC = () => {
 
                 // Araç listesini yenile
                 const refreshedVehicles = await vehiclesService.getAll();
-                setVehicles(refreshedVehicles);
+                setVehicles(refreshedVehicles as Vehicle[]);
 
                 // Update selected vehicle
                 const updatedVehicle = refreshedVehicles.find(v => v.id === selectedVehicle.id);
