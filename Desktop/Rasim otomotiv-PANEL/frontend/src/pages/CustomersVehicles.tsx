@@ -18,31 +18,7 @@ import { vehiclesService } from '../services/vehicles';
 import toast from 'react-hot-toast';
 
 // Types
-interface Customer {
-    id: string;
-    first_name: string;
-    last_name: string;
-    email: string;
-    phone: string;
-    address: string;
-    city: string;
-    notes: string;
-    created_at: string;
-}
 
-interface Vehicle {
-    id: string;
-    customer_id: string;
-    brand: string;
-    model: string;
-    year: number;
-    license_plate: string;
-    vin: string;
-    mileage: number;
-    last_maintenance_date?: string;
-    maintenance_status?: 'ok' | 'warning' | 'critical';
-    created_at: string;
-}
 
 interface WorkOrderPart {
     id: string;
@@ -278,7 +254,9 @@ const CustomersVehicles: React.FC = () => {
                     address: formData.address,
                     city: formData.city,
                     notes: formData.notes,
-                    created_at: new Date().toISOString()
+                    created_at: new Date().toISOString(),
+                    created_by: 'demo',
+                    updated_at: new Date().toISOString()
                 };
 
                 // Add Vehicle if selected (demo mode)
@@ -292,6 +270,9 @@ const CustomersVehicles: React.FC = () => {
                         license_plate: formData.license_plate,
                         vin: formData.vin,
                         mileage: Number(formData.mileage) || 0,
+                        maintenance_status: 'ok',
+                        created_by: 'demo',
+                        updated_at: new Date().toISOString(),
                         created_at: new Date().toISOString()
                     };
                     const updatedVehicles = [...vehicles, newVehicle];
@@ -383,6 +364,9 @@ const CustomersVehicles: React.FC = () => {
                     license_plate: vehicleForm.license_plate,
                     vin: vehicleForm.vin,
                     mileage: Number(vehicleForm.mileage) || 0,
+                    maintenance_status: 'ok',
+                    created_by: 'demo',
+                    updated_at: new Date().toISOString(),
                     created_at: new Date().toISOString()
                 };
 
@@ -1128,12 +1112,13 @@ const CustomersVehicles: React.FC = () => {
                                                         first_name: selectedCustomer.first_name,
                                                         last_name: selectedCustomer.last_name,
                                                         phone: selectedCustomer.phone,
-                                                        email: selectedCustomer.email,
-                                                        city: selectedCustomer.city,
-                                                        address: selectedCustomer.address,
-                                                        notes: selectedCustomer.notes,
+                                                        email: selectedCustomer.email || '',
+                                                        city: selectedCustomer.city || '',
+                                                        address: selectedCustomer.address || '',
+                                                        notes: selectedCustomer.notes || '',
                                                         hasVehicle: false,
-                                                        brand: '', model: '', year: '', vin: '', mileage: '', license_plate: ''
+                                                        brand: '', model: '', year: '', vin: '', mileage: '', license_plate: '',
+                                                        color: '', fuel_type: ''
                                                     });
                                                     setShowEditCustomerModal(true);
                                                 }}
@@ -1200,7 +1185,9 @@ const CustomersVehicles: React.FC = () => {
                                                 year: '',
                                                 vin: '',
                                                 mileage: '',
-                                                license_plate: ''
+                                                license_plate: '',
+                                                color: '',
+                                                fuel_type: ''
                                             });
                                             setShowAddVehicleModal(true);
                                         }}
@@ -1238,7 +1225,7 @@ const CustomersVehicles: React.FC = () => {
                                                                     <span>•</span>
                                                                     <span>{vehicle.year}</span>
                                                                     <span>•</span>
-                                                                    <span>{vehicle.mileage.toLocaleString()} km</span>
+                                                                    <span>{(vehicle.mileage || 0).toLocaleString()} km</span>
                                                                 </div>
                                                                 <div className="mt-2 flex items-center gap-2">
                                                                     <span className={`px-2 py-0.5 rounded text-xs font-medium ${badge.class}`}>
@@ -1259,9 +1246,11 @@ const CustomersVehicles: React.FC = () => {
                                                                     brand: vehicle.brand,
                                                                     model: vehicle.model,
                                                                     year: vehicle.year.toString(),
-                                                                    vin: vehicle.vin,
-                                                                    mileage: vehicle.mileage.toString(),
-                                                                    license_plate: vehicle.license_plate
+                                                                    vin: vehicle.vin || '',
+                                                                    mileage: (vehicle.mileage || 0).toString(),
+                                                                    license_plate: vehicle.license_plate,
+                                                                    color: vehicle.color || '',
+                                                                    fuel_type: vehicle.fuel_type || ''
                                                                 });
                                                                 setShowEditVehicleModal(true);
                                                             }}

@@ -5,12 +5,8 @@ import { vehiclesService } from '../services/vehicles';
 import { getDemoCustomers, getDemoVehicles, getDemoSales, getDemoWorkOrders } from '../services/demo';
 import CurrencyConverter from '../components/CurrencyConverter';
 import {
-  UsersIcon,
   TruckIcon,
-  CurrencyDollarIcon,
-  ChartBarIcon,
   XMarkIcon,
-  ClockIcon,
   WrenchScrewdriverIcon,
   UserPlusIcon,
 } from '@heroicons/react/24/outline';

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { PlusIcon, MagnifyingGlassIcon, FunnelIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { DEMO_VEHICLES, DEMO_MAINTENANCE_PARTS } from '../services/demo';
-import toast from 'react-hot-toast';
+
 
 const Vehicles: React.FC = () => {
     const [vehicles, setVehicles] = useState<Vehicle[]>(DEMO_VEHICLES);
@@ -293,19 +293,18 @@ const Vehicles: React.FC = () => {
                                     <div>
                                         <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Durum</p>
                                         <span
-                                            className={`inline-block px-2 py-1 text-xs font-semibold rounded ${
-                                                selectedVehicle.maintenance_status === 'critical'
+                                            className={`inline-block px-2 py-1 text-xs font-semibold rounded ${selectedVehicle.maintenance_status === 'critical'
                                                     ? 'bg-red-100 text-red-800'
                                                     : selectedVehicle.maintenance_status === 'warning'
-                                                    ? 'bg-yellow-100 text-yellow-800'
-                                                    : 'bg-green-100 text-green-800'
-                                            }`}
+                                                        ? 'bg-yellow-100 text-yellow-800'
+                                                        : 'bg-green-100 text-green-800'
+                                                }`}
                                         >
                                             {selectedVehicle.maintenance_status === 'critical'
                                                 ? 'Kritik'
                                                 : selectedVehicle.maintenance_status === 'warning'
-                                                ? 'Bakım Yaklaştı'
-                                                : 'Sorunsuz'}
+                                                    ? 'Bakım Yaklaştı'
+                                                    : 'Sorunsuz'}
                                         </span>
                                     </div>
                                 </div>
@@ -316,11 +315,10 @@ const Vehicles: React.FC = () => {
                                         <button
                                             key={year}
                                             onClick={() => setSelectedYear(year)}
-                                            className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
-                                                selectedYear === year
+                                            className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${selectedYear === year
                                                     ? 'bg-blue-600 text-white'
                                                     : 'text-gray-600 hover:bg-gray-100'
-                                            }`}
+                                                }`}
                                         >
                                             {year}
                                         </button>
