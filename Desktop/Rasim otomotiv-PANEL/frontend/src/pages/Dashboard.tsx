@@ -7,6 +7,7 @@ import CurrencyConverter from '../components/CurrencyConverter';
 import {
   TruckIcon,
   XMarkIcon,
+  ClockIcon,
   WrenchScrewdriverIcon,
   UserPlusIcon,
 } from '@heroicons/react/24/outline';
@@ -22,7 +23,7 @@ interface Activity {
 }
 
 const Dashboard: React.FC = () => {
-  const [stats, setStats] = useState<SalesStats | null>(null);
+  const [_stats, setStats] = useState<SalesStats | null>(null);
   const [maintenanceDue, setMaintenanceDue] = useState<Vehicle[]>([]);
   const [recentCustomers, setRecentCustomers] = useState<Customer[]>([]);
   const [recentActivities, setRecentActivities] = useState<Activity[]>([]);
