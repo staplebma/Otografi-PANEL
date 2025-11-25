@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "buildCommand": "pwd && ls -la && find . -name 'frontend' -type d && cd \"Desktop/Rasim otomotiv-PANEL/frontend\" && npm ci && npm run build",
-  "devCommand": "cd \"Desktop/Rasim otomotiv-PANEL/frontend\" && npm run dev",
-  "installCommand": "cd \"Desktop/Rasim otomotiv-PANEL/frontend\" && npm ci",
+  "buildCommand": "pwd; ls -la; npm --prefix ./Desktop/Rasim\\ otomotiv-PANEL/frontend ci && npm --prefix ./Desktop/Rasim\\ otomotiv-PANEL/frontend run build",
+  "devCommand": "npm --prefix ./Desktop/Rasim\\ otomotiv-PANEL/frontend run dev",
+  "installCommand": "npm --prefix ./Desktop/Rasim\\ otomotiv-PANEL/frontend ci",
   "framework": "vite",
   "outputDirectory": "Desktop/Rasim otomotiv-PANEL/frontend/dist",
   "rewrites": [
