@@ -4,7 +4,7 @@ FROM node:22-alpine
 WORKDIR /app
 
 # Backend dependencies
-COPY ["Desktop/Rasim otomotiv-PANEL/backend/package.json", "Desktop/Rasim otomotiv-PANEL/backend/package-lock.json", "./"]
+COPY ["Desktop/Rasim otomotiv-PANEL/backend/package*.json", "./"]
 RUN npm ci --legacy-peer-deps
 
 # Backend source
