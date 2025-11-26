@@ -18,4 +18,4 @@ RUN ls -la dist
 
 # Start
 EXPOSE 3007
-CMD ["node", "dist/main"]
+CMD ["node", "dist/src/main"]
