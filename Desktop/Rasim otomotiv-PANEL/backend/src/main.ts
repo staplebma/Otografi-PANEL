@@ -6,9 +6,17 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   // Enable CORS
+  const allowedOrigins = [
+    process.env.FRONTEND_URL,
+    'http://localhost:5173',
+    'https://panel.otografi.com',
+  ].filter(Boolean);
+
   app.enableCors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+    origin: allowedOrigins,
     credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
   });
 
   // Global validation pipe
@@ -20,10 +28,8 @@ async function bootstrap() {
     }),
   );
 
-  // Global prefix (only in development, Railway/Render don't need it)
-  if (process.env.NODE_ENV !== 'production') {
-    app.setGlobalPrefix('api');
-  }
+  // Global API prefix
+  app.setGlobalPrefix('api');
 
   const port = process.env.PORT || 3007;
   await app.listen(port);
