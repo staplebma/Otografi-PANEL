@@ -1,0 +1,11 @@
+panel.otografi.com {
+    # Backend API (strips /api prefix)
+    handle_path /api/* {
+        reverse_proxy backend:3007
+    }
+
+    # Frontend
+    handle {
+        reverse_proxy frontend:80
+    }
+}
